@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.title});
@@ -27,7 +28,9 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        iconTheme: const IconThemeData(color: Colors.white),
       ),
+      drawer: const LeftDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -135,8 +138,13 @@ class ItemCard extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              SnackBar(content: Text("You pressed the ${item.name} button!")),
+              SnackBar(
+                content: Text("You pressed the ${item.name} button!")
+              ),
             );
+            if (item.name == "Add Project") {
+                // TODO: Use Navigator.push() with a MaterialPageRoute for ProjectFormPage
+            }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
