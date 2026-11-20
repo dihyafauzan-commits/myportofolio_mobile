@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/project_form.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key, required this.title});
@@ -13,6 +15,7 @@ class MyHomePage extends StatelessWidget {
   final List<ItemHomepage> items = [
     ItemHomepage("View Projects", Icons.folder, Colors.blue),
     ItemHomepage("Add Project", Icons.add_circle, Colors.green),
+    ItemHomepage("Add Education", Icons.school, Colors.teal),
     ItemHomepage("Logout", Icons.logout, Colors.red),
   ];
 
@@ -31,7 +34,8 @@ class MyHomePage extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       drawer: const LeftDrawer(),
-      body: Padding(
+      body: SingleChildScrollView(
+        child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +83,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
+      ), ),
     );
   }
 }
@@ -143,8 +147,20 @@ class ItemCard extends StatelessWidget {
               ),
             );
             if (item.name == "Add Project") {
-                // TODO: Use Navigator.push() with a MaterialPageRoute for ProjectFormPage
-            }
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProjectFormPage(),
+              ),
+            );
+          } else if (item.name == "Add Education") {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
+            );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
